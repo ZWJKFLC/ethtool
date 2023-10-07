@@ -1,0 +1,22 @@
+{
+  "name": "ethtool",
+  "version": "1.0.0",
+  "description": "A tool set for the development and optimization of eth compiled by Z",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZHAOMEIproject/ethtool.git"
+  },
+  "keywords": [
+    "eth"
+  ],
+  "author": "yunsheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZHAOMEIproject/ethtool/issues"
+  },
+  "homepage": "https://github.com/ZHAOMEIproject/ethtool#readme"
+}
