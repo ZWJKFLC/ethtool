@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZHAOMEIproject/ethtool.git"
+    "url": "git+https://github.com/ZWJKFLC/ethtool.git"
   },
   "keywords": [
     "eth"
@@ -16,7 +16,7 @@
   "author": "yunsheng",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ZHAOMEIproject/ethtool/issues"
+    "url": "https://github.com/ZWJKFLC/ethtool/issues"
   },
-  "homepage": "https://github.com/ZHAOMEIproject/ethtool#readme"
+  "homepage": "https://github.com/ZWJKFLC/ethtool#readme"
 }
