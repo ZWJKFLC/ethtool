@@ -1,6 +1,6 @@
 {
   "name": "ethtool",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A tool set for the development and optimization of eth compiled by Z",
   "main": "main.js",
   "scripts": {
