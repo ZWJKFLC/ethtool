@@ -1,6 +1,6 @@
 const ethtool = require('./main.js');
 
-async function main(){
+async function main() {
     console.log(ethtool);
 }
 

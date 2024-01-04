@@ -6,6 +6,5 @@ module.exports = {
     //     ...require('./id-readcontracts'),
     // },
     ...require('./hh_log'),
-    ...require('./readcontracts'),
     ...require('./id-readcontracts'),
 }
