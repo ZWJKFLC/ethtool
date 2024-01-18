@@ -3,13 +3,7 @@ const path = require('path');
 const util = require('util');
 
 const writeFile = util.promisify(fs.writeFile);
-/**
- * 记录合约发布地址
- * @param {*} deployments json
- * @param {*} name 类型
- * @param {*} network 网络
- */
-// for Hardhat deployment
+
 var dir;
 
 var info = {};
@@ -116,3 +110,4 @@ function replacer(key, value) {
     return value; // 其他类型的值保持不变
   }
 }
+

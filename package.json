@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/ZWJKFLC/ethtool/issues"
   },
-  "homepage": "https://github.com/ZWJKFLC/ethtool#readme"
+  "homepage": "https://github.com/ZWJKFLC/ethtool#readme",
+  "dependencies": {
+    "ethereumjs-util": "^7.1.5",
+    "ethers": "^6.10.0"
+  }
 }

@@ -36,8 +36,11 @@ function loadcontractinfo(filePath) {
     });
 }
 
-exports.getcontractinfo = async function getcontractinfo() {
+exports.getcontractinfo = async function getcontractinfo(newfilePath) {
     // return await loadcontractinfo(filePath);
+    if (newfilePath) {
+        filePath = newfilePath
+    }
     let info = new Object();
     let filelist = await loadcontractinfo(filePath);
     for (let i in filelist) {
@@ -56,11 +59,13 @@ exports.getcontractinfo = async function getcontractinfo() {
 }
 var loc_allinfo
 // var loc_allinfo = require("../../deployments/all.json");
-exports.loc_getcontractinfo = async function loc_getcontractinfo() {
+exports.loc_getcontractinfo = async function loc_getcontractinfo(newfilePath) {
     if (loc_allinfo) {
         return loc_allinfo;
     }
-    loc_allinfo = require("../../deployments/all.json");
+    if (newfilePath) {
+        filePath = newfilePath
+    }
+    loc_allinfo = require(filePath + "/all.json");
     return loc_allinfo;
-    // return loc_allinfo;
 }

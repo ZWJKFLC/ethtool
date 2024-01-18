@@ -2,8 +2,6 @@ const { ecsign } = require('ethereumjs-util');
 const ethers = require("ethers");
 const { getPermitDigest } = require('./erc20')
 exports.erc20_loc_getsign = async function erc20_loc_getsign(contractinfo, params, privateKey) {
-
-
     let provider = new ethers.JsonRpcProvider(contractinfo.network.url);
     let account = new ethers.Wallet(privateKey, provider);
     let contract = new ethers.Contract(
