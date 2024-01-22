@@ -2,12 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const writeFile = util.promisify(fs.writeFile);
-const { getcontractinfo } = require("./id-readcontracts.js")
 class log {
     constructor(hhtool) {
         this.hhtool = hhtool;
         this.info = hhtool.info;
-        this.info.deploymentPath = path.resolve(this.info.basepath, `./deployments`)
     }
     async writer_info(network, Artifact, contract) {
         await this.baseinit(network, Artifact, contract);
@@ -34,34 +32,22 @@ class log {
             contract.address = contract.target
         }
         let deploymentPath = this.info.deploymentPath
-        await this.creatfile(deploymentPath);
+        await creatfile(deploymentPath);
         await this.set_base_info(network, Artifact, contract);
     }
     async baseinit2(network, Artifact) {
         let deploymentPath = this.info.deploymentPath
         await writeFile(
             deploymentPath + `/${network.name}/${Artifact.contractName}.json`,
-            JSON.stringify(info, replacer, 2));
+            JSON.stringify(this.info, replacer, 2));
         await writeFile(
             deploymentPath + `/newinfo/${Artifact.contractName}.json`,
-            JSON.stringify(info, replacer, 2));
+            JSON.stringify(this.info, replacer, 2));
         console.log(`Exported deployments into ${deploymentPath}`);
         await this.updatedeployments();
     }
-    async creatfile(deploymentPath) {
-        if (!fs.existsSync(deploymentPath)) {
-            await fs.mkdirSync(deploymentPath, { recursive: true });
-        }
-        dir = deploymentPath + `/newinfo`;
-        if (!fs.existsSync(dir)) {
-            await fs.mkdirSync(dir, { recursive: true });
-        }
-        dir = deploymentPath + `/${network.name}`;
-        if (!fs.existsSync(dir)) {
-            await fs.mkdirSync(dir, { recursive: true });
-        }
-    }
     async set_base_info(network, Artifact, contract) {
+        this.contractinfo = {}
         this.contractinfo["contractName"] = Artifact.contractName;
         this.contractinfo["abi"] = Artifact.abi;
         this.contractinfo["address"] = contract.address;
@@ -80,7 +66,7 @@ class log {
     async writer_Arguments(network, Artifact) {
         let deploymentPath = this.info.deploymentPath
         await creatfile(path.resolve(deploymentPath, `../Arguments`));
-        dir = (
+        let dir = (
             path.resolve(deploymentPath, `../Arguments`) +
             `/${network.name}/${Artifact.contractName}.json`
         )
@@ -94,7 +80,7 @@ class log {
         );
     }
     async updatedeployments() {
-        var contractinfo = await getcontractinfo();
+        var contractinfo = await this.hhtool.id_readcontracts.getcontractinfo(this.info.deploymentPath);
         await writeFile(
             this.info.deploymentPath + `/all.json`,
             JSON.stringify(contractinfo));
@@ -110,4 +96,16 @@ function replacer(key, value) {
         return value; // 其他类型的值保持不变
     }
 }
-
+async function creatfile(deploymentPath) {
+    if (!fs.existsSync(deploymentPath)) {
+        await fs.mkdirSync(deploymentPath, { recursive: true });
+    }
+    let dir = deploymentPath + `/newinfo`;
+    if (!fs.existsSync(dir)) {
+        await fs.mkdirSync(dir, { recursive: true });
+    }
+    dir = deploymentPath + `/${network.name}`;
+    if (!fs.existsSync(dir)) {
+        await fs.mkdirSync(dir, { recursive: true });
+    }
+}

@@ -2,19 +2,18 @@ const { hardhattool } = require("./hardhattool/hardhattool.js")
 
 class ethtoolclass {
   constructor(info) {
-    this.ethtool = this;
-    let check = ["path"];
-    console.log(info);
+    let check = ["basepath"];
     if (!check.every(key => key in info)) {
       throw "error info"
     }
+    this.ethtool = this;
     this.info = info;
     Object.assign(this, {
-      "hardhattool": new hardhattool(this.info),
+      hardhattool: new hardhattool(this.info),
     });
   }
   async set(info) {
-    let check = ["path"];
+    let check = ["basepath"];
     if (!check.every(key => key in info)) {
       throw "error info"
     }
@@ -26,6 +25,8 @@ class ethtoolclass {
 
 
 
+
 module.exports = {
-  ethtoolclass
+  // ethtoolclass
+  hardhattool
 }
