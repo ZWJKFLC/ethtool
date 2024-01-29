@@ -67,7 +67,7 @@ class testscripts {
         await main_contract.waitForDeployment();
         console.log(contractname + " deployed to:", main_contract.target);
         let Artifact = await artifacts.readArtifact(contractname);
-        await writer_info_all(network, Artifact, main_contract, args);
+        await this.hhtool.log.writer_info_all(network, Artifact, main_contract, args);
         contractinfo = await this.hhtool.id_readcontracts.getcontractinfo(this.info.deploymentPath);
     }
 
