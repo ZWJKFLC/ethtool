@@ -12,17 +12,17 @@ class log {
         await this.baseinit2(network, Artifact);
     }
     async writer_info_all(network, Artifact, contract, Argument) {
-        await baseinit(network, Artifact, contract);
+        await this.baseinit(network, Artifact, contract);
 
         this.contractinfo["constructorArguments"] = Argument;
-        await writer_Arguments(network, Artifact)
-        await baseinit2(network, Artifact);
+        await this.writer_Arguments(network, Artifact)
+        await this.baseinit2(network, Artifact);
     }
     async writer_info_all_proxy(network, Artifact, contract, Argument, proxyaddr) {
         await this.baseinit(network, Artifact, contract);
 
         this.contractinfo["constructorArguments"] = Argument;
-        await writer_Arguments(network, Artifact)
+        await this.writer_Arguments(network, Artifact)
         this.contractinfo["p_address"] = proxyaddr;
 
         await this.baseinit2(network, Artifact);
